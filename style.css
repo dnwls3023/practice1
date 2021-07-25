@@ -1,1 +1,35 @@
 @import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Ubuntu:wght@500&display=swap');
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content : center;
+  align-items:center;
+}
+
+.tle{
+  font-family: 'Nanum Gothic', sans-serif;
+  margin: 30px 40px;
+  font-size:30px;
+}
+
+.input{
+  display: flex;
+  flex-direction: column;
+  justify-content : center;
+  align-items:center;
+}
+.input__army-data{
+  border : 2px solid black;
+  border-radius : 15px;
+  margin-bottom: 20px;
+  padding : 10px 15px;
+  text-align: center;
+}
+
+.input__btn{
+  border:3px solid black;
+  padding : 5px 10px;
+  background-color:white;
+}
