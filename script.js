@@ -1,11 +1,11 @@
 const loginInput =document.querySelector("input.input__army-data");
 const loginBtn = document.querySelector("input.input__btn");
-const result = document.querySelector(".result");
 let vYear;
 let vMonth;
 let vDay;
-
+let flag = false;
 function onLoginSubmit(event){
+  const result = document.querySelector(".result");
   let newDiv;
   event.preventDefault();
   let str = loginInput.value;
@@ -57,14 +57,27 @@ function onLoginSubmit(event){
   const resMonth = start.getMonth();
   const resDate = start.getDate();
 
+  newDiv = document.createElement("h1");
+
+  if(isNaN(resYear) || isNaN(resMonth) || isNaN(resDate) || 
+  year < 2020 || year > 2030 || month < 1 || month>12 || day < 1 || day > 31){
+    newDiv.innerText = "당신은 지금 잘못된 값을 입력하고 있습니다. 다시 입력해주세요";
+    if(!flag)
+      result.appendChild(newDiv);
+    flag = true;
+    return;
+  }
 
   console.log(resYear,resMonth,resDate);  
-  // 이 부분 오류 있음
-  newDiv = document.createElement("h1");
+  
+  if(flag)
+    result.remove("h1");  
   newDiv.innerText = `전역일은 ${resYear}년 ${resMonth}월 ${resDate}일 입니다.`;
 
   result.appendChild(newDiv);
   loginBtn.setAttribute("disabled","");
+
+  loginBtn.remove();
 }
 
 loginBtn.addEventListener("click",onLoginSubmit);
