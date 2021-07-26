@@ -1,11 +1,12 @@
 const loginInput =document.querySelector("input.input__army-data");
 const loginBtn = document.querySelector("input.input__btn");
-
+const result = document.querySelector(".result");
 let vYear;
 let vMonth;
 let vDay;
 
 function onLoginSubmit(event){
+  let newDiv;
   event.preventDefault();
   let str = loginInput.value;
 
@@ -29,7 +30,7 @@ function onLoginSubmit(event){
   let start = new Date(year,month,day);
   // 윤년 계산 알고리즘
   function isLeapyear(){
-    
+    result.remove();
     const curYear = start.getFullYear();
 
     if((curYear%4==0 && curYear % 100 != 0)||curYear % 400 == 0){
@@ -59,8 +60,11 @@ function onLoginSubmit(event){
 
   console.log(resYear,resMonth,resDate);  
   // 이 부분 오류 있음
-  let newDiv = document.createElement("div");
+  newDiv = document.createElement("h1");
   newDiv.innerText = `전역일은 ${resYear}년 ${resMonth}월 ${resDate}일 입니다.`;
+
+  result.appendChild(newDiv);
+  loginBtn.setAttribute("disabled","");
 }
 
 loginBtn.addEventListener("click",onLoginSubmit);
